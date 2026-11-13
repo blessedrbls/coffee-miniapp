@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Bean & Brew — Telegram Mini App for a coffee shop: menu, cart and pickup orders.">
+  <title>Bean &amp; Brew — Coffee Mini App</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+
+  <!-- Офіційний скрипт Telegram Mini Apps: дає об'єкт window.Telegram.WebApp -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Панель демо-режиму: показується лише у звичайному браузері -->
+  <div id="demo-bar" class="demo-bar" hidden>
+    <button id="demo-back" class="icon-btn" type="button" aria-label="Back" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <span class="demo-pill" id="demo-label">Demo</span>
+    <div class="demo-actions">
+      <button id="demo-lang" class="chip-btn" type="button">EN</button>
+      <button id="demo-theme" class="chip-btn" type="button" aria-label="Theme">🌙</button>
+    </div>
+  </div>
+
+  <!-- Сюди app.js малює поточний екран -->
+  <main id="app" class="app" aria-live="polite"></main>
+
+  <!-- Імітація Telegram MainButton у демо-режимі -->
+  <div id="demo-main" class="demo-main" hidden>
+    <button id="demo-main-btn" class="main-btn" type="button"></button>
+  </div>
+
+  <!-- Заглушка: сторінку відкрили не в Telegram -->
+  <div id="intro" class="intro" hidden>
+    <div class="intro-card">
+      <div class="intro-icon">☕</div>
+      <h2 id="intro-title"></h2>
+      <p id="intro-text"></p>
+      <button id="intro-btn" class="main-btn" type="button"></button>
+      <p class="intro-hint" id="intro-hint"></p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
