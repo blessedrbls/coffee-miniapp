@@ -13,11 +13,15 @@ from orders import STATUS_FLOW
 from texts import MENU_BUTTON, STATUS_LABELS
 
 
-def menu_keyboard(webapp_url: str) -> ReplyKeyboardMarkup:
+def menu_keyboard(webapp_url: str, lang: str) -> ReplyKeyboardMarkup:
     """Звичайна (reply) клавіатура з кнопкою web_app.
-    Саме з такої кнопки Mini App може надіслати дані боту через sendData."""
+    Саме з такої кнопки Mini App може надіслати дані боту через sendData.
+    Mini App, відкритий із reply-кнопки, не отримує даних про користувача,
+    тому мову передаємо в адресі: ...?lang=uk"""
+    separator = "&" if "?" in webapp_url else "?"
+    url = f"{webapp_url}{separator}lang={lang}"
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text=MENU_BUTTON, web_app=WebAppInfo(url=webapp_url))]],
+        keyboard=[[KeyboardButton(text=MENU_BUTTON, web_app=WebAppInfo(url=url))]],
         resize_keyboard=True,
         is_persistent=True,
     )

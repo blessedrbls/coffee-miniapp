@@ -26,7 +26,7 @@ async def on_web_app_data(message: Message, bot: Bot, config: Config, db: Databa
         order = parse_order(message.web_app_data.data, fallback_lang)
     except OrderError as exc:
         log.warning("Відхилено замовлення від %s: %s", user.id, exc)
-        await message.answer(t(fallback_lang, "order_invalid"), reply_markup=menu_keyboard(config.webapp_url))
+        await message.answer(t(fallback_lang, "order_invalid"), reply_markup=menu_keyboard(config.webapp_url, fallback_lang))
         return
 
     if order.total_mismatch:
@@ -38,7 +38,7 @@ async def on_web_app_data(message: Message, bot: Bot, config: Config, db: Databa
     log.info("Нове замовлення #%s на %s ₴ від %s", order_id, order.total, user.id)
 
     # 3. Підтвердження клієнту
-    await message.answer(client_receipt(order_id, order), reply_markup=menu_keyboard(config.webapp_url))
+    await message.answer(client_receipt(order_id, order), reply_markup=menu_keyboard(config.webapp_url, order.lang))
 
     # 4. Картка замовлення всім адмінам із кнопками статусів
     if not config.admin_ids:

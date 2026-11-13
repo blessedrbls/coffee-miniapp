@@ -15,7 +15,7 @@ router = Router(name="common")
 async def cmd_start(message: Message, config: Config) -> None:
     # Вітання без імені користувача, як і задумано
     lang = lang_of(message.from_user.language_code if message.from_user else None)
-    await message.answer(t(lang, "start"), reply_markup=menu_keyboard(config.webapp_url))
+    await message.answer(t(lang, "start"), reply_markup=menu_keyboard(config.webapp_url, lang))
 
 
 @router.message(Command("myid"))
@@ -28,4 +28,4 @@ async def cmd_myid(message: Message) -> None:
 @router.message()
 async def any_message(message: Message, config: Config) -> None:
     lang = lang_of(message.from_user.language_code if message.from_user else None)
-    await message.answer(t(lang, "help"), reply_markup=menu_keyboard(config.webapp_url))
+    await message.answer(t(lang, "help"), reply_markup=menu_keyboard(config.webapp_url, lang))

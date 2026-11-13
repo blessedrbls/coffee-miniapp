@@ -7,8 +7,12 @@
 
   // ---------- 1. Telegram чи звичайний браузер? ----------
   const tg = window.Telegram && window.Telegram.WebApp;
-  // initData — підписаний рядок від Telegram. Поза Telegram він порожній.
-  const IS_TG = Boolean(tg && tg.initData);
+  // Увага: якщо Mini App відкрито з reply-кнопки (саме так працює sendData),
+  // Telegram НЕ передає initData — рядок порожній. Тому орієнтуємося на platform:
+  // у Telegram це 'ios', 'android', 'macos', 'tdesktop'…, у звичайному браузері — 'unknown'.
+  const IS_TG = Boolean(tg && (tg.initData || (tg.platform && tg.platform !== 'unknown')));
+  // Мову бот передає в адресі кнопки: ...?lang=uk (initData з користувачем може не бути)
+  const URL_LANG = new URLSearchParams(window.location.search).get('lang') || '';
 
   const CURRENCY = '₴';
   const MAX_QTY = 20;
@@ -175,8 +179,9 @@
   function detectLang() {
     let code = '';
     if (IS_TG) {
-      // Мова з налаштувань Telegram користувача
-      code = (tg.initDataUnsafe && tg.initDataUnsafe.user && tg.initDataUnsafe.user.language_code) || '';
+      // Мова з налаштувань Telegram користувача: з адреси від бота або з initData
+      const user = tg.initDataUnsafe && tg.initDataUnsafe.user;
+      code = URL_LANG || (user && user.language_code) || navigator.language || '';
     } else {
       code = storage.get('bb_lang', '') || navigator.language || '';
     }
@@ -356,7 +361,7 @@
 
   // ---------- 12. Екрани ----------
   const form = {
-    name: (IS_TG && tg.initDataUnsafe.user && tg.initDataUnsafe.user.first_name) || '',
+    name: (IS_TG && tg.initDataUnsafe && tg.initDataUnsafe.user && tg.initDataUnsafe.user.first_name) || '',
     phone: '',
     pickup: 'asap',
     comment: '',
