@@ -1,0 +1,18 @@
+# Секрети
+.env
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# База замовлень бота
+*.db
+*.db-journal
+
+# macOS
+.DS_Store
+
+# Локальні налаштування Claude Code
+.claude/
