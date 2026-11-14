@@ -14,7 +14,7 @@
   // Мову бот передає в адресі кнопки: ...?lang=uk (initData з користувачем може не бути)
   const URL_LANG = new URLSearchParams(window.location.search).get('lang') || '';
 
-  const CURRENCY = '₴';
+  const CURRENCY = 'USD'; // ціни в products.js — у центах
   const MAX_QTY = 20;
   const OPEN_HOUR = 8;
   const CLOSE_HOUR = 21;
@@ -209,7 +209,8 @@
     return n === 1 ? forms[0] : forms[1];
   }
 
-  const money = (n) => `${n.toLocaleString(lang === 'uk' ? 'uk-UA' : 'en-US')} ${CURRENCY}`;
+  // 380 (центів) → "$3.80". Формат однаковий для обох мов.
+  const money = (cents) => (cents / 100).toLocaleString('en-US', { style: 'currency', currency: CURRENCY });
 
   // ---------- 5. Тема ----------
   function applyTheme() {

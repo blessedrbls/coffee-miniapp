@@ -10,7 +10,7 @@ from config import Config
 from db import Database
 from keyboards import menu_keyboard, status_keyboard
 from orders import OrderError, admin_card, client_receipt, parse_order
-from texts import lang_of, t
+from texts import lang_of, money, t
 
 router = Router(name="order")
 log = logging.getLogger(__name__)
@@ -35,7 +35,7 @@ async def on_web_app_data(message: Message, bot: Bot, config: Config, db: Databa
 
     # 2. Зберігаємо
     order_id = db.create_order(user.id, user.username, order)
-    log.info("Нове замовлення #%s на %s ₴ від %s", order_id, order.total, user.id)
+    log.info("Нове замовлення #%s на %s від %s", order_id, money(order.total), user.id)
 
     # 3. Підтвердження клієнту
     await message.answer(client_receipt(order_id, order), reply_markup=menu_keyboard(config.webapp_url, order.lang))

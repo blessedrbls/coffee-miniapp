@@ -79,5 +79,6 @@ def t(lang: str, key: str, **kwargs) -> str:
     return text.format(button=escape(MENU_BUTTON), address=CAFE_ADDRESS.get(lang, CAFE_ADDRESS["en"]), **kwargs)
 
 
-def money(amount: int) -> str:
-    return f"{amount:,}".replace(",", " ") + " ₴"
+def money(cents: int) -> str:
+    """380 (центів) → "$3.80". Ціни зберігаємо в центах — цілими числами без похибок."""
+    return f"${cents // 100:,}.{cents % 100:02d}"
