@@ -190,7 +190,7 @@ h1, h2, h3, p { margin: 0; }
   flex: 0 0 148px; border-radius: var(--radius-sm); overflow: hidden;
   background: var(--card); box-shadow: var(--shadow); text-align: left;
 }
-.product-mini .img-wrap { height: 104px; border-radius: 0; }
+.product-mini .img-wrap { width: 100%; height: 104px; border-radius: 0; }
 .product-mini-body { padding: 10px 12px 12px; }
 .product-mini-name { font-size: 14.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .product-mini-price { font-size: 14px; color: var(--hint); margin-top: 2px; }
