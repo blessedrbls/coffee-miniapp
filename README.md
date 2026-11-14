@@ -55,9 +55,16 @@ sequenceDiagram
 
 ## Screenshots
 
-| Menu | Product list | Cart | Checkout | Admin order card |
-|:---:|:---:|:---:|:---:|:---:|
-| _screenshot coming soon_ | _screenshot coming soon_ | _screenshot coming soon_ | _screenshot coming soon_ | _screenshot coming soon_ |
+| Menu | Product list | Cart |
+|:---:|:---:|:---:|
+| <img src="docs/screenshots/01-menu.png" width="250" alt="Menu with categories"> | <img src="docs/screenshots/02-products.png" width="250" alt="Product list with +/− buttons"> | <img src="docs/screenshots/03-cart.png" width="250" alt="Cart with total"> |
+
+| Checkout | Order review | Dark theme |
+|:---:|:---:|:---:|
+| <img src="docs/screenshots/04-checkout.png" width="250" alt="Checkout form"> | <img src="docs/screenshots/05-confirm.png" width="250" alt="Order review before sending"> | <img src="docs/screenshots/06-dark-theme.png" width="250" alt="Dark theme"> |
+
+<!-- Admin order card in Telegram: add docs/screenshots/07-admin-card.png and a row here -->
+_Admin order card in Telegram — screenshot coming soon._
 
 ## Tech stack
 
