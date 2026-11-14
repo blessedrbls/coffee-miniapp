@@ -1,6 +1,7 @@
 /*
  * Демо-меню кав'ярні.
- * Ціни в гривнях (₴). Бот має ту саму таблицю цін і рахує суму сам —
+ * Ціни в доларах США, записані в ЦЕНТАХ (380 = $3.80) — цілі числа без похибок округлення.
+ * Бот має ту саму таблицю цін і рахує суму сам —
  * ціни звідси використовуються лише для показу в інтерфейсі.
  * Фото: Unsplash (https://unsplash.com/license), джерела — у README.md.
  */
@@ -37,7 +38,7 @@ window.PRODUCTS = [
   {
     id: 'espresso',
     category: 'coffee',
-    price: 45,
+    price: 250,
     size: { uk: '30 мл', en: '30 ml' },
     name: { uk: 'Еспресо', en: 'Espresso' },
     description: {
@@ -49,7 +50,7 @@ window.PRODUCTS = [
   {
     id: 'americano',
     category: 'coffee',
-    price: 55,
+    price: 300,
     size: { uk: '250 мл', en: '250 ml' },
     name: { uk: 'Американо', en: 'Americano' },
     description: {
@@ -61,7 +62,7 @@ window.PRODUCTS = [
   {
     id: 'cappuccino',
     category: 'coffee',
-    price: 70,
+    price: 380,
     size: { uk: '250 мл', en: '250 ml' },
     name: { uk: 'Капучино', en: 'Cappuccino' },
     description: {
@@ -73,7 +74,7 @@ window.PRODUCTS = [
   {
     id: 'latte',
     category: 'coffee',
-    price: 75,
+    price: 420,
     size: { uk: '350 мл', en: '350 ml' },
     name: { uk: 'Лате', en: 'Latte' },
     description: {
@@ -85,7 +86,7 @@ window.PRODUCTS = [
   {
     id: 'flat_white',
     category: 'coffee',
-    price: 80,
+    price: 450,
     size: { uk: '200 мл', en: '200 ml' },
     name: { uk: 'Флет вайт', en: 'Flat White' },
     description: {
@@ -99,7 +100,7 @@ window.PRODUCTS = [
   {
     id: 'black_tea',
     category: 'tea',
-    price: 50,
+    price: 280,
     size: { uk: '400 мл', en: '400 ml' },
     name: { uk: 'Чорний чай', en: 'Black Tea' },
     description: {
@@ -111,7 +112,7 @@ window.PRODUCTS = [
   {
     id: 'green_tea',
     category: 'tea',
-    price: 55,
+    price: 300,
     size: { uk: '400 мл', en: '400 ml' },
     name: { uk: 'Зелений чай з м’ятою', en: 'Green Tea with Mint' },
     description: {
@@ -123,7 +124,7 @@ window.PRODUCTS = [
   {
     id: 'matcha_latte',
     category: 'tea',
-    price: 90,
+    price: 490,
     size: { uk: '300 мл', en: '300 ml' },
     name: { uk: 'Матча лате', en: 'Matcha Latte' },
     description: {
@@ -137,7 +138,7 @@ window.PRODUCTS = [
   {
     id: 'croissant',
     category: 'desserts',
-    price: 65,
+    price: 320,
     size: { uk: '90 г', en: '90 g' },
     name: { uk: 'Круасан', en: 'Croissant' },
     description: {
@@ -149,7 +150,7 @@ window.PRODUCTS = [
   {
     id: 'cheesecake',
     category: 'desserts',
-    price: 95,
+    price: 550,
     size: { uk: '130 г', en: '130 g' },
     name: { uk: 'Чизкейк з чорницею', en: 'Blueberry Cheesecake' },
     description: {
@@ -161,7 +162,7 @@ window.PRODUCTS = [
   {
     id: 'chocolate_cake',
     category: 'desserts',
-    price: 90,
+    price: 520,
     size: { uk: '120 г', en: '120 g' },
     name: { uk: 'Шоколадний торт', en: 'Chocolate Cake' },
     description: {
@@ -173,7 +174,7 @@ window.PRODUCTS = [
   {
     id: 'macarons',
     category: 'desserts',
-    price: 120,
+    price: 600,
     size: { uk: '3 шт.', en: '3 pcs' },
     name: { uk: 'Макарони', en: 'Macarons' },
     description: {
